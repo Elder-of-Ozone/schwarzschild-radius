@@ -1,0 +1,54 @@
+#!/usr/bin/python3.5
+
+import sys
+import shutil
+import os
+import pickle
+
+def show_user(members):
+    os.system("clear")
+    print("\nNames", "     ", "Code")
+    for keys in members.keys():
+        print(keys, " - ", members[keys])
+    pause = input("Paused")
+
+def add_option(members):
+    os.system("clear")
+    name = input("Please enter name: ")
+    code = input("Please enter optiono: ")
+    members[name] = code
+    with open('filename.pickle', 'wb') as handles:
+        pickle.dump(members, handles)
+        print("saved")
+        
+
+
+try:
+    with open('filename.pickle', 'rb') as handles:
+        members = pickle.load(handles)
+        #show_members(members)
+except:
+    print("There may be a problem with file")
+    pause = input("paused")
+    members = {}
+
+def show_menu():
+    os.system("clear")
+    print("\n","*" * 12, "MENU", "*" * 12)
+    print("1. List options")
+    print("2. Add option")
+    print("3. Delete option")
+    print("99. Save")
+    print("0. Abort")
+    print("*" * 28, "\n")
+    return input("Please make a selection: ")
+
+while True:
+    ret = show_menu()
+    if ret  == "1":
+        show_user(members)
+    elif ret == "2":
+        add_option(members)
+    else:
+        print("No Values")
+        break
