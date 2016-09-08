@@ -4,12 +4,26 @@ import sys
 import shutil
 import os
 import pickle
+import collections #OrderedDict
+user = {"economy": 9001, # It's over 9000!
+        "city": 1,       # city ->  capital -> Metropolies 
+        "education": 1,  # University Levels
+        "fleetNum": 1,
+        "fleetID": [1],
+        }
 
-def show_user(members):
+fleets = {"1" : {"ships": 100000},
+         } 
+
+
+def show_user(user):
     os.system("clear")
-    print("\nNames", "     ", "Code")
-    for keys in members.keys():
-        print(keys, " - ", members[keys])
+    
+    userSorted = collections.OrderedDict(sorted(user.items()))
+    for obj in userSorted:
+        print(obj, ": " , user[obj])
+
+    print("\n")
     pause = input("Paused")
 
 def add_option(members):
@@ -46,7 +60,7 @@ def show_menu():
 while True:
     ret = show_menu()
     if ret  == "1":
-        show_user(members)
+        show_user(user)
     elif ret == "2":
         add_option(members)
     else:
