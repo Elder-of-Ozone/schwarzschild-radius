@@ -17,21 +17,20 @@ fleets = {"1" : {"ships": 100000},
          } 
 
 
+# planet table
+# 
+# ID City Education
+#
+#
+
 planet = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
                 "education": 1},  # University Levels}
         }
 
 
-def grabPlanetObj(user, planet, pid=1, num=-1):
-    """ Grab planets from user ids
-    
-    variables
-    
-    - num - num of planets
-        -1    : ALL 
-    - pid - planet id
-        
-    
+def grabPlanetObj(user, planet, pid=[]):
+    """ 
+    Grab planets from user id
     """
 
     planet_id = [x for x in user["planetID"]] 
@@ -41,6 +40,17 @@ def grabPlanetObj(user, planet, pid=1, num=-1):
     
     return plist
 
+def grabFleetObj(user, fleet, pid=[]):
+    """
+    Grab fleet from user id
+    """
+
+    fleet_id = [ x for x in user["fleetID"]]
+    flist = []
+    for i in fleet_id:
+        flist.append(fleet[i])
+
+    return flist
 
 
 def show_user(user):
