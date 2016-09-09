@@ -5,15 +5,43 @@ import shutil
 import os
 import pickle
 import collections #OrderedDict
+
 user = {"economy": 9001, # It's over 9000!
-        "city": 1,       # city ->  capital -> Metropolies 
-        "education": 1,  # University Levels
-        "fleetNum": 1,
+        "planetNum": 1,
+        "planetID": [1],
+       "fleetNum": 1,
         "fleetID": [1],
         }
 
 fleets = {"1" : {"ships": 100000},
          } 
+
+
+planet = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
+                "education": 1},  # University Levels}
+        }
+
+
+def grabPlanetObj(user, planet, pid=1, num=-1):
+    """ Grab planets from user ids
+    
+    variables
+    
+    - num - num of planets
+        -1    : ALL 
+    - pid - planet id
+        
+    
+    """
+
+    planet_id = [x for x in user["planetID"]] 
+    plist = []
+    for i in planet_id:
+        plist.append(planet[i])
+        
+
+    return pid
+
 
 
 def show_user(user):
@@ -24,6 +52,7 @@ def show_user(user):
         print(obj, ": " , user[obj])
 
     print("\n")
+    print(grabPlanetObj(user, planet))
     pause = input("Paused")
 
 def add_option(members):
