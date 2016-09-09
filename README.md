@@ -9,17 +9,16 @@ fascinating.
 
 I would like to implement this idea into a weapon that can be utilised in the game. 
 
-### Features Implemented
+## Features Implemented
 
-	* Simple GUI - Not really but you can edit parameters :)
-	*
+* Simple GUI - Not really but you can edit parameters :)
+*
 
-### Direction and Future Development
+## Direction and Future Development
 
-	Well to be honest, this list will be huge so I'm not going to write it all down. 
-	I'll write a comprehensive road map in the months or years a head. 
+Well to be honest, this list will be huge so I'm not going to write it all down. 
+I'll write a comprehensive road map in the months or years a head. 
 
-	#### Features
-	Trade
-	Combat
-	etc
+* Trade
+* Combat
+* etc
