@@ -8,9 +8,9 @@ import collections #OrderedDict
 
 user = {"economy": 9001, # It's over 9000!
         "planetNum": 1,
-        "planetID": [1],
+        "planetID": ["1"],
        "fleetNum": 1,
-        "fleetID": [1],
+        "fleetID": ["1"],
         }
 
 fleets = {"1" : {"ships": 100000},
@@ -38,9 +38,8 @@ def grabPlanetObj(user, planet, pid=1, num=-1):
     plist = []
     for i in planet_id:
         plist.append(planet[i])
-        
-
-    return pid
+    
+    return plist
 
 
 
