@@ -96,8 +96,7 @@ def save_objs():
     with open('planet.objs', 'wb') as handles:
         pickle.dump(planets, handles)
         print("Saved planet objects")
-
-
+    ret = input("Saved")
 def load_objs():
     try:
         with open('user.objs', 'rb') as handles:
