@@ -1,6 +1,6 @@
 # Schwarzschild Radius
 
-Schwarzschild Radius is loosely based on a game I played almost a decade ago. If you remember the game called Dark Galaxy, this may be for you.
+Schwarzschild Radius is a multiplier turn-based strategy game. It is loosely based on a game I played almost a decade ago called Dark Galaxy. If you remember the game, this may be for you.
 
 This game will never be in 'production' unless someone desperately wants me to release it. I will, however, allow users to join and play but with the knowledge that it will always be under active develoment.
 
@@ -9,10 +9,31 @@ fascinating.
 
 I would like to implement this idea into a weapon that can be utilised in the game. 
 
-## Features Implemented
+## Currently Implemented
+* Simple menu GUI - Not really but you can edit parameters :)
+			
+## Working On
+### Priority [#]
+* 
+* Establish turn system [2]
+* Establish queue system [2]
 
-* Simple GUI - Not really but you can edit parameters :)
-*
+### Database
+* Current method: Pickle
+	* Automatically store and import objects [1]
+* Migrate to SQL [5]  
+
+### Economics
+* Population dynamics
+
+### Resources
+* Resource Dynamics
+
+### Trade
+* None
+
+### Combat
+* None
 
 ## Direction and Future Development
 
