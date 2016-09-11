@@ -6,25 +6,9 @@ import os
 import pickle
 import collections #OrderedDict
 
-user = {"economy": 9001, # It's over 9000!
-        "planetNum": 1,
-        "planetID": ["1"],
-       "fleetNum": 1,
-        "fleetID": ["1"],
-        }
-
-# Fleet Table
-# ID Name Ships
-#fleets = {"1" : {"ships": 100000},
-#         } 
-
-# planet table
-# ID City Education
-
-planets = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
-                "education": 1},  # University Levels}
-        }
-
+user = {}
+fleets = {}
+planets = {}
 
 def grabPlanetObj(user, planets, pid=[]):
     """ 
@@ -38,7 +22,7 @@ def grabPlanetObj(user, planets, pid=[]):
     
     return plist
 
-def grabFleetObj(user, fleet, pid=[]):
+def grabFleetObj(user, fleets, pid=[]):
     """
     Grab fleet from user id
     """
@@ -46,7 +30,7 @@ def grabFleetObj(user, fleet, pid=[]):
     fleet_id = [ x for x in user["fleetID"]]
     flist = []
     for i in fleet_id:
-        flist.append(fleet[i])
+        flist.append(fleets[i])
 
     return flist
 
@@ -55,13 +39,13 @@ def show_user(user):
     os.system("clear")
     
     userSorted = collections.OrderedDict(sorted(user.items()))
+    print("User Obj")
     for obj in userSorted:
         print(obj, ": " , user[obj])
 
-    print("\n Planet Obj")
+    print("\nPlanet Obj")
     print(grabPlanetObj(user, planets),"\n")
-    pause = input("")
-    print("\n Fleet Obj")
+    print("\nFleet Obj")
     print(grabFleetObj(user, fleets), "\n")
     pause = input("")
 
@@ -71,14 +55,16 @@ def add_option():
     obj  = input("Object to change: ") #user
     name = input("Key to add/change: ")
     ret =  input("Key Value: ")
-    
+
     if obj == "user":
         user[name] = ret
     elif obj == "planets":
         pid = input("Enter planet ID")
+        pid = "1"
         planets[pid][name] = ret 
     elif obj == "fleets":
         pid = input("enter fleet ID: ")
+        pid = "1"
         fleets[pid][name] = ret 
     
     save_objs()
@@ -87,44 +73,44 @@ def save_objs():
 
     with open('user.objs', 'wb') as handles:
         pickle.dump(user, handles)
-        print("Saved user objects")
 
     with open('fleet.objs', 'wb') as handles:
         pickle.dump(fleets, handles)
-        print("Saved fleet objects")
         
     with open('planet.objs', 'wb') as handles:
         pickle.dump(planets, handles)
-        print("Saved planet objects")
     ret = input("Saved")
+
 def load_objs():
     try:
         with open('user.objs', 'rb') as handles:
+            global user
             user = pickle.load(handles)
-            print("Loaded user objects")
     except:
         user = {"economy": 9001, # It's over 9000!
-                "planetNum": 1,
-                "planetID": ["1"],
-                "fleetNum": 1,
-                "fleetID": ["1"],
+            "planetNum": 1,
+            "planetID": ["1"],
+            "fleetNum": 1,
+            "fleetID": ["1"],
             }
-    with open('fleet.objs', 'rb') as handles:
-        fleets = pickle.load(handles)
-        print("Loaded fleet objects")
-    #except:
-       # fleets = {"1" : {"ships": 100000},
-        #    } 
-
+    try:
+        with open('fleet.objs', 'rb') as handles:
+            global fleets
+            fleets = pickle.load(handles)
+    except:
+        fleets = {"1" : {"ships": 100000},
+            } 
 
     try:
         with open('planet.objs', 'rb') as handles:
-            planet = pickle.load(handles)
-            print("Saved planet objects")
+            global planets
+            planets = pickle.load(handles)
     except:
         planets = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
                    "education": 1},  # University Levels}
-                }
+                  }
+
+    ret = input("Loaded Documents")
 
 def show_menu():
     os.system("clear")
@@ -144,5 +130,5 @@ while True:
     elif ret == "2":
         add_option()
     else:
-        print("No Values")
+        save_objs()
         break
