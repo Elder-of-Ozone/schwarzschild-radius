@@ -13,22 +13,20 @@ user = {"economy": 9001, # It's over 9000!
         "fleetID": ["1"],
         }
 
-fleets = {"1" : {"ships": 100000},
-         } 
-
+# Fleet Table
+# ID Name Ships
+#fleets = {"1" : {"ships": 100000},
+#         } 
 
 # planet table
-# 
 # ID City Education
-#
-#
 
-planet = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
+planets = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
                 "education": 1},  # University Levels}
         }
 
 
-def grabPlanetObj(user, planet, pid=[]):
+def grabPlanetObj(user, planets, pid=[]):
     """ 
     Grab planets from user id
     """
@@ -36,7 +34,7 @@ def grabPlanetObj(user, planet, pid=[]):
     planet_id = [x for x in user["planetID"]] 
     plist = []
     for i in planet_id:
-        plist.append(planet[i])
+        plist.append(planets[i])
     
     return plist
 
@@ -60,47 +58,92 @@ def show_user(user):
     for obj in userSorted:
         print(obj, ": " , user[obj])
 
-    print("\n")
-    print(grabPlanetObj(user, planet))
-    pause = input("Paused")
+    print("\n Planet Obj")
+    print(grabPlanetObj(user, planets),"\n")
+    pause = input("")
+    print("\n Fleet Obj")
+    print(grabFleetObj(user, fleets), "\n")
+    pause = input("")
 
-def add_option(members):
+
+def add_option():
     os.system("clear")
-    name = input("Please enter name: ")
-    code = input("Please enter optiono: ")
-    members[name] = code
-    with open('filename.pickle', 'wb') as handles:
-        pickle.dump(members, handles)
-        print("saved")
+    obj  = input("Object to change: ") #user
+    name = input("Key to add/change: ")
+    ret =  input("Key Value: ")
+    
+    if obj == "user":
+        user[name] = ret
+    elif obj == "planets":
+        pid = input("Enter planet ID")
+        planets[pid][name] = ret 
+    elif obj == "fleets":
+        pid = input("enter fleet ID: ")
+        fleets[pid][name] = ret 
+    
+    save_objs()
+
+def save_objs():
+
+    with open('user.objs', 'wb') as handles:
+        pickle.dump(user, handles)
+        print("Saved user objects")
+
+    with open('fleet.objs', 'wb') as handles:
+        pickle.dump(fleets, handles)
+        print("Saved fleet objects")
         
+    with open('planet.objs', 'wb') as handles:
+        pickle.dump(planets, handles)
+        print("Saved planet objects")
 
 
-try:
-    with open('filename.pickle', 'rb') as handles:
-        members = pickle.load(handles)
-        #show_members(members)
-except:
-    print("There may be a problem with file")
-    pause = input("paused")
-    members = {}
+def load_objs():
+    try:
+        with open('user.objs', 'rb') as handles:
+            user = pickle.load(handles)
+            print("Loaded user objects")
+    except:
+        user = {"economy": 9001, # It's over 9000!
+                "planetNum": 1,
+                "planetID": ["1"],
+                "fleetNum": 1,
+                "fleetID": ["1"],
+            }
+    with open('fleet.objs', 'rb') as handles:
+        fleets = pickle.load(handles)
+        print("Loaded fleet objects")
+    #except:
+       # fleets = {"1" : {"ships": 100000},
+        #    } 
+
+
+    try:
+        with open('planet.objs', 'rb') as handles:
+            planet = pickle.load(handles)
+            print("Saved planet objects")
+    except:
+        planets = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
+                   "education": 1},  # University Levels}
+                }
 
 def show_menu():
     os.system("clear")
     print("\n","*" * 12, "MENU", "*" * 12)
-    print("1. List options")
-    print("2. Add option")
-    print("3. Delete option")
-    print("99. Save")
-    print("0. Abort")
+    print("1. List objects")
+    print("2. Add objects")
+    print("3. Delete objects")
     print("*" * 28, "\n")
     return input("Please make a selection: ")
+
+load_objs()
 
 while True:
     ret = show_menu()
     if ret  == "1":
         show_user(user)
     elif ret == "2":
-        add_option(members)
+        add_option()
     else:
         print("No Values")
         break
