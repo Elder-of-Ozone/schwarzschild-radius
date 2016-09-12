@@ -14,14 +14,13 @@ I would like to implement this idea into a weapon that can be utilised in the ga
 			
 ## Working On
 ### Priority [#]
-* 
-* Establish turn system [2]
+* Establish turn system [1]
 * Establish queue system [2]
 
 ### Database
 * Current method: Pickle
-	* Automatically store and import objects [1]
-* Migrate to SQL [5]  
+	* Automatically store and import objects [COMPLETED]
+* Migrate to SQL [5] //This is very low on the agenda 
 
 ### Economics
 * Population dynamics

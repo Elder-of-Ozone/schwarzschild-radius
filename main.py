@@ -5,6 +5,8 @@ import shutil
 import os
 import pickle
 import collections #OrderedDict
+import TimeContainer
+
 
 user = {}
 fleets = {}
@@ -122,7 +124,10 @@ def show_menu():
     return input("Please make a selection: ")
 
 load_objs()
-
+try:
+    TimeContainer1 = TimeContainer.TimeContainer(user["turn"])
+except:
+    TimeContainer1 = TimeContainer.TimeContainer() 
 while True:
     ret = show_menu()
     if ret  == "1":
