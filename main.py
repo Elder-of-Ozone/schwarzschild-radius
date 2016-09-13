@@ -39,9 +39,12 @@ def grabFleetObj(user, fleets, pid=[]):
 
 def show_user(user):
     os.system("clear")
-    
+   
+    print("Game Status")
+    print(game)
+
     userSorted = collections.OrderedDict(sorted(user.items()))
-    print("User Obj")
+    print("\nUser Obj")
     for obj in userSorted:
         print(obj, ": " , user[obj])
 
@@ -73,6 +76,9 @@ def add_option():
 
 def save_objs():
 
+    with open('game.objs', 'wb') as handles:
+        pickle.dump(game, handles)
+
     with open('user.objs', 'wb') as handles:
         pickle.dump(user, handles)
 
@@ -84,6 +90,15 @@ def save_objs():
     ret = input("Saved")
 
 def load_objs():
+    try:
+        with open('game.objs','rb') as handles:
+            global game
+            game = pickle.load(handles)
+    except:
+        game = {"turn": "",
+                "created":"",
+                }
+
     try:
         with open('user.objs', 'rb') as handles:
             global user
@@ -139,6 +154,8 @@ while True:
         show_user(user)
     elif ret == "2":
         add_option()
+    elif ret == "u":
+        TimeContainer.updateServerCreation()
     else:
         save_objs()
         break

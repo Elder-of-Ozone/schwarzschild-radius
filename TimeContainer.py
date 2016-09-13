@@ -5,6 +5,9 @@ class TimeContainer:
         self.turn = turn_old
         self.created = TimeContainer.getCurrentTime() 
 
+    def updateServerCreation(self):
+        self.created = TimeContainer.getCurrentTime()
+
     @staticmethod
     def getCurrentTime():
         return datetime.now()
