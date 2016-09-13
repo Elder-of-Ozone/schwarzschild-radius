@@ -1,13 +1,22 @@
-import time
+from datetime import datetime
 
 class TimeContainer:
     def __init__(self, created, turn_old=1):
         self.turn = turn_old
-        print(self.turn)
-    def updateTime(self, turn):
-        
-        return turn
-        
+        self.created = TimeContainer.getCurrentTime() 
+
+    @staticmethod
+    def getCurrentTime():
+        return datetime.now()
+
+    def secondsElapsed(self):
+        current = TimeContainer.getCurrentTime()
+
+        seconds = (current-self.created).total_seconds()
+        return seconds
+       
+    def getCurrentTurn(self):
+        return self.secondsElapsed()
 
 
         

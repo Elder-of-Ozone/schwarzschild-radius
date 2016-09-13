@@ -117,17 +117,22 @@ def load_objs():
 def show_menu():
     os.system("clear")
     print("\n","*" * 12, "MENU", "*" * 12)
-    print("1. List objects")
-    print("2. Add objects")
-    print("3. Delete objects")
+    print("\n Status: OFFLINE")
+    print(" Current Time:", TimeContainer.getCurrentTime().time())
+    print(" Turns Elapsed:", TimeContainer.getCurrentTurn())
+    print("\n")
+
+    print(" 1. List objects")
+    print(" 2. Add objects")
+    print(" 3. Delete objects")
     print("*" * 28, "\n")
     return input("Please make a selection: ")
 
 load_objs()
 try:
-    TimeContainer1 = TimeContainer.TimeContainer(user["turn"])
+    TimeContainer = TimeContainer.TimeContainer(user["turn"])
 except:
-    TimeContainer1 = TimeContainer.TimeContainer() 
+    TimeContainer = TimeContainer.TimeContainer() 
 while True:
     ret = show_menu()
     if ret  == "1":
