@@ -21,5 +21,7 @@ class TimeContainer:
     def getCurrentTurn(self):
         return self.secondsElapsed()
 
+    def increaseTurn(self, turn):
+        return turn + 10
 
-        
+         
