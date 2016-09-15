@@ -1,17 +1,22 @@
 # Schwarzschild Radius
 
-Schwarzschild Radius is a multiplier turn-based strategy game. It is loosely based on a game I played almost a decade ago called Dark Galaxy. If you remember the game, this may be for you.
+Schwarzschild Radius is a multiplayer turn-based strategy game. It is loosely based on a game I played almost a decade ago called Dark Galaxy. If you remember the game, this may be for you.
 
-This game will never be in 'production' unless someone desperately wants me to release it. I will, however, allow users to join and play but with the knowledge that it will always be under active develoment.
+I will never put this into 'production' unless someone desperately wants me to release it. I will, however, allow users to join once a proper database is up. Be aware that it will always be under develoment.
 
-So why did I choose Schwarzschild Radius? Well, the name is based on the theoretical concept that if you continue to shrink an object, that object will collapse to form a blackhole. Earth, once shrunk, forms a blackhole when the size reaches 9 mm. Absolutely
+## What is in the name?
+
+So what is in a name? That's a typical question that often gets asked on almost every application. 
+So why did I choose Schwarzschild Radius? Well, the name is based on the theoretical limit of an objection compressed to form a black hole. Earth, once shrunk, forms a blackhole when the size reaches 9 mm. Absolutely
 fascinating. 
 
 I would like to implement this idea into a weapon that can be utilised in the game. 
 
 ## Currently Implemented
 * Simple menu GUI - Not really but you can edit parameters :)
-			
+* Save and load objects
+* Limited turns
+
 ## Working On
 ### Priority [#]
 * Establish turn system [1]

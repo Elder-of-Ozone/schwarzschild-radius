@@ -7,90 +7,105 @@ import pickle
 import collections #OrderedDict
 import TimeContainer
 
-
-user = {}
-fleets = {}
-planets = {}
-
-def grabPlanetObj(user, planets, pid=[]):
-    """ 
-    Grab planets from user id
-    """
-
-    planet_id = [x for x in user["planetID"]] 
-    plist = []
-    for i in planet_id:
-        plist.append(planets[i])
-    
-    return plist
-
-def grabFleetObj(user, fleets, pid=[]):
-    """
-    Grab fleet from user id
-    """
-
-    fleet_id = [ x for x in user["fleetID"]]
-    flist = []
-    for i in fleet_id:
-        flist.append(fleets[i])
-
-    return flist
+class DataManagement():
 
 
-def save_objs():
+    #Default game settings
+    gameObj = 
+        {   
+            "turn": "",
+            "created":"",
+        }
 
-    with open('game.objs', 'wb') as handles:
-        pickle.dump(game, handles)
-
-    with open('user.objs', 'wb') as handles:
-        pickle.dump(user, handles)
-
-    with open('fleet.objs', 'wb') as handles:
-        pickle.dump(fleets, handles)
-        
-    with open('planet.objs', 'wb') as handles:
-        pickle.dump(planets, handles)
-    ret = input("Saved")
-
-def load_objs():
-    try:
-        with open('game.objs','rb') as handles:
-            global game
-            game = pickle.load(handles)
-    except:
-        game = {"turn": "",
-                "created":"",
-                }
-
-    try:
-        with open('user.objs', 'rb') as handles:
-            global user
-            user = pickle.load(handles)
-    except:
-        user = {"economy": 9001, # It's over 9000!
+    userObj = 
+        {   
+            "economy": 9001, # It's over 9000!
             "planetNum": 1,
             "planetID": ["1"],
             "fleetNum": 1,
             "fleetID": ["1"],
-            }
-    try:
-        with open('fleet.objs', 'rb') as handles:
-            global fleets
-            fleets = pickle.load(handles)
-    except:
-        fleets = {"1" : {"ships": 100000},
-            } 
+        }
+ 
 
-    try:
-        with open('planet.objs', 'rb') as handles:
-            global planets
-            planets = pickle.load(handles)
-    except:
-        planets = {"1" : {"city": 1,       # city ->  capital -> Metropolies 
-                   "education": 1},  # University Levels}
-                  }
+    planetsObj = 
+        {
+            "1" :   {
+                        "city": 1,       # city ->  capital -> Metropolies 
+                        "education": 1
+                    },  # University Levels}
+        
+        }
 
-    ret = input("Loaded Documents")
+
+
+    @staticmethod
+    def grabPlanetObj(user, planets, pid=[]):
+        """
+        Grab planets from user id
+        """
+
+        planet_id = [x for x in user["planetID"]] 
+        plist = []
+        for i in planet_id:
+            plist.append(planets[i])
+        
+        return plist
+
+    @staticmethod
+    def grabFleetObj(user, fleets, pid=[]):
+        """
+        Grab fleet from user id
+        """
+
+        fleet_id = [ x for x in user["fleetID"]]
+        flist = []
+        for i in fleet_id:
+            flist.append(fleets[i])
+
+        return flist
+
+    @staticmethod
+    def save_objs():
+
+        with open('game.objs', 'wb') as handles:
+            pickle.dump(game, handles)
+
+        with open('user.objs', 'wb') as handles:
+            pickle.dump(user, handles)
+
+        with open('fleet.objs', 'wb') as handles:
+            pickle.dump(fleets, handles)
+            
+        with open('planet.objs', 'wb') as handles:
+            pickle.dump(planets, handles)
+
+    @staticmethod
+    def load_objs():
+        try:
+            with open('game.objs','rb') as handles:
+                global game
+                game = pickle.load(handles)
+        except:
+            game = DataManagement.gameObj
+
+        try:
+            with open('user.objs', 'rb') as handles:
+                global user
+                user = pickle.load(handles)
+        except:
+                user = DataManagement.userObj
+       try:
+            with open('fleet.objs', 'rb') as handles:
+                global fleets
+                fleets = pickle.load(handles)
+        except:
+            fleets = 
+        try:
+            with open('planet.objs', 'rb') as handles:
+                global planets
+                planets = pickle.load(handles)
+        except:
+        ret = input("Loaded Documents")
 
 class MenuViewController:
 
