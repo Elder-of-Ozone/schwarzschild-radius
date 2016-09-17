@@ -2,9 +2,9 @@ from datetime import datetime
 
 class TimeContainer:
     def __init__(self, created, turn_old=1):
-        self.turn = turn_old
         self.created = TimeContainer.getCurrentTime() 
-
+        self.testing = 0
+        self.turn = self.getCurrentTurn()
     def updateServerCreation(self):
         self.created = TimeContainer.getCurrentTime()
 
@@ -15,13 +15,13 @@ class TimeContainer:
     def secondsElapsed(self):
         current = TimeContainer.getCurrentTime()
 
-        seconds = (current-self.created).total_seconds()
-        return seconds
+        self.seconds = (current-self.created).total_seconds()
+        return self.seconds
        
     def getCurrentTurn(self):
-        return self.secondsElapsed()
+        return self.secondsElapsed() + self.testing 
 
-    def increaseTurn(self, turn):
-        return turn + 10
+    def increaseTurn(self):
+        self.testing = self.testing + 10
 
          

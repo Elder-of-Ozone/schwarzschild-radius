@@ -131,6 +131,9 @@ class MenuViewController(DataManagement):
                 self.add_option()
             elif ret == "u":
                 self.TimeContainer.updateServerCreation()
+            elif ret == "n":
+                self.TimeContainer.increaseTurn()
+
             else:
                 self.save_objs()
                 break       
@@ -140,7 +143,7 @@ class MenuViewController(DataManagement):
         os.system("clear")
         print("\n","*" * 12, "MENU", "*" * 12)
         print("\n Status: OFFLINE")
-        print(" Current Time:", self.TimeContainer.getCurrentTime().time())
+        print(" Current Time:", self.TimeContainer.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
         print(" Turns Elapsed:", self.TimeContainer.getCurrentTurn())
         print("\n")
 
