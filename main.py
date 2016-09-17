@@ -11,14 +11,12 @@ class DataManagement():
 
 
     #Default game settings
-    gameObj = 
-        {   
+    gameObj = { 
             "turn": "",
             "created":"",
         }
 
-    userObj = 
-        {   
+    userObj = {
             "economy": 9001, # It's over 9000!
             "planetNum": 1,
             "planetID": ["1"],
@@ -27,14 +25,19 @@ class DataManagement():
         }
  
 
-    planetsObj = 
-        {
+    planetsObj = { 
             "1" :   {
                         "city": 1,       # city ->  capital -> Metropolies 
                         "education": 1
                     },  # University Levels}
         
         }
+
+    fleetObj = {
+            "1" : { 
+                    "ships": 100
+                    }
+            }
 
 
 
@@ -94,44 +97,51 @@ class DataManagement():
                 user = pickle.load(handles)
         except:
                 user = DataManagement.userObj
-       try:
+        try:
             with open('fleet.objs', 'rb') as handles:
                 global fleets
                 fleets = pickle.load(handles)
         except:
-            fleets = 
+            fleets = DataManagement.fleetObj
         try:
             with open('planet.objs', 'rb') as handles:
                 global planets
                 planets = pickle.load(handles)
         except:
+            planets = DataManagement.planetsObj
+        
+        
         ret = input("Loaded Documents")
 
-class MenuViewController:
+class MenuViewController(DataManagement):
 
     def __init__(self):
-        load_objs()
+        self.load_objs()
+        self.TimeContainer = TimeContainer.TimeContainer(user["turn"])
 
-    def getMenuInput(self)
+        self.getMenuInput()
+        
+
+    def getMenuInput(self):
         while True:
             ret = self.show_menu()
             if ret  == "1":
-                show_user(user)
+                self.show_user(user)
             elif ret == "2":
-                add_option()
+                self.add_option()
             elif ret == "u":
-                TimeContainer.updateServerCreation()
+                self.TimeContainer.updateServerCreation()
             else:
-                save_objs()
+                self.save_objs()
                 break       
 
 
-    def show_menu():
+    def show_menu(self):
         os.system("clear")
         print("\n","*" * 12, "MENU", "*" * 12)
         print("\n Status: OFFLINE")
-        print(" Current Time:", TimeContainer.getCurrentTime().time())
-        print(" Turns Elapsed:", TimeContainer.getCurrentTurn())
+        print(" Current Time:", self.TimeContainer.getCurrentTime().time())
+        print(" Turns Elapsed:", self.TimeContainer.getCurrentTurn())
         print("\n")
 
         print(" 1. List objects")
@@ -152,13 +162,13 @@ class MenuViewController:
             print(obj, ": " , user[obj])
 
         print("\nPlanet Obj")
-        print(grabPlanetObj(user, planets),"\n")
+        print(self.grabPlanetObj(user, planets),"\n")
         print("\nFleet Obj")
-        print(grabFleetObj(user, fleets), "\n")
+        print(self.grabFleetObj(user, fleets), "\n")
         pause = input("")
 
 
-    def add_option():
+    def add_option(self):
         os.system("clear")
         obj  = input("Object to change: ") #user
         name = input("Key to add/change: ")
@@ -175,12 +185,10 @@ class MenuViewController:
             pid = "1"
             fleets[pid][name] = ret 
         
-        save_objs()
+        self.save_objs()
 
+if __name__ == '__main__':
 
-    load_objs()
-    try:
-        TimeContainer = TimeContainer.TimeContainer(user["turn"])
-    except:
-        TimeContainer = TimeContainer.TimeContainer() 
+    Menu = MenuViewController()
+
 
