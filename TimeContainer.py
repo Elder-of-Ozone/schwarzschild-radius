@@ -22,6 +22,9 @@ class TimeContainer:
         return self.secondsElapsed() + self.testing 
 
     def increaseTurn(self):
-        self.testing = self.testing + 10
+        for x in range(0,self.testing):
+            self.testing = self.testing + x
+            evalTurn()
 
-         
+    def evalTurn(self):
+
