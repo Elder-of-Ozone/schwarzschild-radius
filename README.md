@@ -19,13 +19,19 @@ I would like to implement this idea into a weapon that can be utilised in the ga
 
 ## Working On
 ### Priority [#]
-* Establish turn system [1]
-* Establish queue system [2]
+* Turn system [1]
+* Queue system [2]
 
 ### Database
 * Current method: Pickle
 	* Automatically store and import objects [COMPLETED]
 * Migrate to SQL [5] //This is very low on the agenda 
+
+### Galaxy
+* visualise the galaxy. 
+	* Have in place obstacles similar to how FTL that affect systems.
+		* This will make gameplay a bit more tactical
+
 
 ### Economics
 * Population dynamics
