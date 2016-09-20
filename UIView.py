@@ -122,7 +122,7 @@ class UIView(DataManagement):
         self.getMenuInput()
         
 
-    def getMenuInput(self):
+    def menu(self):
         while True:
             ret = self.show_menu()
             if ret  == "1":

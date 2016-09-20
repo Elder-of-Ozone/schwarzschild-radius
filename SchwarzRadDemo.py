@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from UIView import UIView
+import User
 import Controller
-import 
 
 """
 This class handles the Model-View-Controller. 
@@ -13,14 +13,15 @@ class SchwarzRadDemo():
 
     def __init__(self):
         print("Initialising game")
-        View = UIView()
-        User =  
+        self.View = UIView()
+        self.User = User()
+        self.Controller = Controller(View, User)
+        
         self.main() 
 
     def main(self):
         while True:
-            Controller.updateView
-            view.getMenuInput()
+            self.Controller.updateView()
 
 
     def loadSettings():
