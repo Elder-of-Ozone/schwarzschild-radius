@@ -27,4 +27,5 @@ class TimeContainer:
             evalTurn()
 
     def evalTurn(self):
+        print("Evaluated turn")
 
