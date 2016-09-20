@@ -1,3 +1,6 @@
+Status: Current broken while moving towards MVC
+* Need to add automated building, testing and all those other git plugins
+
 # Schwarzschild Radius
 
 Schwarzschild Radius is a multiplayer turn-based strategy game. It is loosely based on a game I played almost a decade ago called Dark Galaxy. If you remember the game, this may be for you.
