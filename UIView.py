@@ -119,37 +119,17 @@ class UIView(DataManagement):
         self.load_objs()
         self.TimeContainer = TimeContainer.TimeContainer(user["turn"])
 
-        self.getMenuInput()
-        
-
-    def menu(self):
-        while True:
-            ret = self.show_menu()
-            if ret  == "1":
-                self.show_user(user)
-            elif ret == "2":
-                self.add_option()
-            elif ret == "u":
-                self.TimeContainer.updateServerCreation()
-            elif ret == "n":
-                self.TimeContainer.increaseTurn()
-
-            else:
-                self.save_objs()
-                break       
-
-
-    def show_menu(self):
+    def show_menu(self, Timer):
         os.system("clear")
         print("\n","*" * 12, "MENU", "*" * 12)
         print("\n Status: OFFLINE")
-        print(" Current Time:", self.TimeContainer.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
-        print(" Turns Elapsed:", self.TimeContainer.getCurrentTurn())
+        print(" Current Time:", Timer.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
+        print(" Turns Elapsed:", Timer.getCurrentTurn())
         print("\n")
 
         print(" 1. List objects")
         print(" 2. Add objects")
-        print(" 3. Delete objects")
+        print(" 3. Delete objects\n")
         print("*" * 28, "\n")
         return input("Please make a selection: ")
     
