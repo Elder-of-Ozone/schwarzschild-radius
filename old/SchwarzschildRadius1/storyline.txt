@@ -1,0 +1,28 @@
+Here I write the storyline for the game. 
+
+The universe is vast and open. There are many places for trade and many places for war.
+
+The Consortium is the main association that plagues the universe. Unleashing plagues,
+destroying trade routes and invading planets, it has the capacity of turning turning
+whole planets against itself. 
+
+Tutorial!?!? Highlight buttons in RED.
+1. View scanners. See The Consortium fleet incoming to planet. Need to build 10 fighters.
+2. 
+3.
+4. Fighters complete. 
+5. Attack enemy fleet. Pick up debris (TODO)
+6. Build replacement fighters, bombers and cargo vessel.
+7. 
+8.
+9.
+10. Send to enemy planet. 
+11.
+12.
+13.
+14.	Invade (with population but will change to military TODO)
+15. Establish trade route. END Tutorial.
+
+
+
+

@@ -113,7 +113,7 @@ class DataManagement():
         
         ret = input("Loaded Documents")
 
-class MenuViewController(DataManagement):
+class UIView(DataManagement):
 
     def __init__(self):
         self.load_objs()
@@ -192,6 +192,6 @@ class MenuViewController(DataManagement):
 
 if __name__ == '__main__':
 
-    Menu = MenuViewController()
+    Menu = UIView()
 
 
