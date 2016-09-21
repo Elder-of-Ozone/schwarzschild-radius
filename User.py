@@ -14,4 +14,5 @@ class User():
 
    # The following functions will edit this field 
     
-    
+    def getUserPlanets(self):
+
