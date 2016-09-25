@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from UIView import UIView
 from User import User
-from Control import Controller
+from Controller import Controller
 from TimeContainer import TimeContainer
 """
 This class handles the Model-View-Controller. 
