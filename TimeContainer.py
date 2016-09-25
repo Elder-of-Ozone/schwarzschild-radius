@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class TimeContainer:
-    def __init__(self, created, turn_old=1):
+    def __init__(self, created=1, turn_old=1):
         self.created = TimeContainer.getCurrentTime() 
         self.testing = 0
         self.turn = self.getCurrentTurn()

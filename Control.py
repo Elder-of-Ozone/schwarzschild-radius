@@ -1,12 +1,14 @@
 #!/usr/bin/python
 
+from UIView import UIView
+
 class Controller():
     
     def __init__(self, View, User, Time):
 
-        self.View = View()
-        self.User = User()
-        self.Time = Time()
+        self.View = View
+        self.User = User
+        self.Time = Time
 
     def updateView(self):
         ret = self.View.show_menu(self.Time)

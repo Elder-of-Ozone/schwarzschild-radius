@@ -22,7 +22,7 @@ class User():
 
         return plist
 
-    def grabPlanetObj(user, fleets, fid=[])
+    def grabPlanetObj(user, fleets, fid=[]):
         fleet_id = [ x for x in user["fleetID"]]
         flist = []
         for i in fleet_id:
