@@ -11,13 +11,13 @@ class Controller():
         self.Time = Time
 
     def updateView(self):
-        ret = self.View.show_menu(self.Time)
-        self.View.menu(self.User, self.Time)
+        ret = self.View.show_menu(self.User, self.Time)
+        #self.View.menu(self.User, self.Time)
 
         if ret == "1":
-            self.View.show_user()
+            self.View.show_user(self.User)
         elif ret == "2":
-            self.View.add_option()
+            self.View.add_option(self.User, self.User.fleets, self.User.planets)
         elif ret == "3":
             self.View.add_option()
         elif ret == "u":

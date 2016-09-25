@@ -5,6 +5,7 @@ class TimeContainer:
         self.created = TimeContainer.getCurrentTime() 
         self.testing = 0
         self.turn = self.getCurrentTurn()
+
     def updateServerCreation(self):
         self.created = TimeContainer.getCurrentTime()
 
