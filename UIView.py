@@ -47,9 +47,9 @@ class UIView():
         print(user.getUserFleetsFromList(user.user, user.fleets), "\n")
         pause = input("")
 
-    def viewPlanets(self, listOfPlanets):
-        for planet in listOfPlanets:
-            print(planet)
+    def viewPlanets(self, planets):
+        for key,value in planets.items(): 
+            print(value['name'])
 
         return input("")
 
@@ -66,21 +66,9 @@ class UIView():
     def add_option(self, user, planets, fleets):
         os.system("clear")
         obj  = input("Object to change: ") #user
-        name = input("Key to add/change: ")
-        ret =  input("Key Value: ")
-
-        if obj == "user":
-            user.user[name] = ret
-        elif obj == "planets":
-            pid = input("Enter planet ID")
-            pid = "1"
-            planets[pid][name] = ret 
-        elif obj == "fleets":
-            pid = input("enter fleet ID: ")
-            pid = "1"
-            fleets[pid][name] = ret 
-        
-        user.save_objs()
+        key = input("Key to add/change: ")
+        val =  input("Key Value: ")
+        return obj, key, val
 
 if __name__ == '__main__':
 

@@ -17,9 +17,9 @@ class Controller():
         if ret == "1":
             self.View.show_user(self.User)
         elif ret == "2":
-            self.View.add_option(self.User, self.User.fleets, self.User.planets)
+            self.add_option(self.User, self.User.fleets, self.User.planets)
         elif ret == "3":
-            select_planet = self.View.viewPlanets(self.User.getUserPlanetsFromList(self.User.user, self.User.planets))
+            select_planet = self.View.viewPlanets(self.User.planets)
             building_id = self.View.add_structure(select_planet, self.availableStructuresForUser())
             self.structure(select_planet, building_id)
 
@@ -29,6 +29,22 @@ class Controller():
             self.Time.addArtificalTurn()
         else:
             return 0
+
+    def add_option(self,user, fleets, planets):
+
+        obj, key, val = self.View.add_option(user, planets, fleets)
+        
+        if obj == "user":
+            user.user[key] = val
+        elif obj == "planet":
+            planet_id = input("Enter Planet ID")
+            planet_id = "1" # testing purposes
+            planets[planet_id][key] = val
+
+        elif obj == "fleet":
+            fleet_id = input("Enter Fleet ID")
+            fleet_id = "1"
+            fleets[fleet_id][key] = val
 
     def structure(self,building_id):
         structures = ["mine", "farm", "shipyard", "housing"]
