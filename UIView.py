@@ -17,11 +17,12 @@ class UIView():
         os.system("clear")
         print("\n","*" * 12, "MENU", "*" * 12)
         print("\n Status: OFFLINE")
-        print(" ", User.username)
+        print("", User.username)
         print(" Current Time:", Time.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
         print(" Turns Elapsed:", Time.getCurrentTurn())
         print("\n")
-
+        print(" Population:", User.user["population"])
+        print("\n")
         print(" 1. List objects")
         print(" 2. Add objects")
         print(" 3. Delete objects\n")
@@ -45,6 +46,21 @@ class UIView():
         print("\nFleet Obj")
         print(user.getUserFleetsFromList(user.user, user.fleets), "\n")
         pause = input("")
+
+    def viewPlanets(self, listOfPlanets):
+        for planet in listOfPlanets:
+            print(planet)
+
+        return input("")
+
+    def add_structure(self, planet, availableStructuresToBuild=None):
+        """
+        Build structures.
+        """
+        os.system("clear")
+        print("Build Structure for", planet["name"])
+        print("1. Mine") 
+        return input("Number? ")
 
 
     def add_option(self, user, planets, fleets):

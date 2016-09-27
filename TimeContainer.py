@@ -22,7 +22,7 @@ class TimeContainer:
     def getCurrentTurn(self):
         return self.secondsElapsed() + self.testing 
 
-    def increaseTurn(self):
+    def addArtificalTurn(self):
         for x in range(0,self.testing):
             self.testing = self.testing + x
             evalTurn()
