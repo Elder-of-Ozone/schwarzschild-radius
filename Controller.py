@@ -49,10 +49,14 @@ class Controller():
         user.save_objs()
 
 
-    def structure(self,building_id):
+    def structure(self,planet,building_id):
+        print(planet)
+        print(building_id)
         structures = ["mine", "farm", "shipyard", "housing"]
-        building_id = float(building_id) - 1
-        self.User.user["building"][structures[building_id]]+=1 
+        building_id = int(building_id) - 1
+        self.User.planets["1"][structures[building_id]] = int(self.User.planets["1"][structures[building_id]]) + 1
+        # Add to queue
+        self.User.save_objs()
 
     def evalTurn(self):
         user = self.User.user

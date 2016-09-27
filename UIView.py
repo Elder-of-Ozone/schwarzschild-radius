@@ -23,9 +23,9 @@ class UIView():
         print("\n")
         print(" Population:", User.user["population"])
         print("\n")
-        print(" 1. List objects")
-        print(" 2. Add objects")
-        print(" 3. Delete objects\n")
+        print(" 1. List Objects")
+        print(" 2. Add Objects")
+        print(" 3. Construct Structure\n")
         print("*" * 28, "\n")
         return input("Please make a selection: ")
     
@@ -48,19 +48,21 @@ class UIView():
         pause = input("")
 
     def viewPlanets(self, planets):
+        os.system("clear")
+        
         for key,value in planets.items(): 
             print(value['name'])
 
-        return input("")
+        return input("Planet Identification Number:")
 
     def add_structure(self, planet, availableStructuresToBuild=None):
         """
         Build structures.
         """
         os.system("clear")
-        print("Build Structure for", planet["name"])
+        print("Build Structure for",)
         print("1. Mine") 
-        return input("Number? ")
+        return input("Building Code: ")
 
 
     def add_option(self, user, planets, fleets):
