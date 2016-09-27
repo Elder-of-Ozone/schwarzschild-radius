@@ -46,6 +46,9 @@ class Controller():
             fleet_id = "1"
             fleets[fleet_id][key] = val
 
+        user.save_objs()
+
+
     def structure(self,building_id):
         structures = ["mine", "farm", "shipyard", "housing"]
         building_id = float(building_id) - 1

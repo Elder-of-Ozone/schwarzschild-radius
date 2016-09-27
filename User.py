@@ -54,7 +54,7 @@ class User():
 
         try:
             with open('fleet.objs','rb') as file:
-                self.fleet = pickle.load(file)
+                self.fleets = pickle.load(file)
         except:
             print("Unable to load, reverting to default")
 
