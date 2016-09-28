@@ -21,7 +21,7 @@ class UIView():
         print(" Current Time:", Time.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
         print(" Turns Elapsed:", Time.getCurrentTurn())
         print("\n")
-        print(" Population:", User.user["population"])
+        print(" Population:", User.planets["1"]["population"])
         print("\n")
         print(" 1. List Objects")
         print(" 2. Add Objects")

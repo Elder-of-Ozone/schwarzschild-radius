@@ -26,7 +26,7 @@ class Controller():
         elif ret == "u":
             self.Time.updateServerCreation()
         elif ret == "n":
-            self.Time.addArtificalTurn()
+            self.evalTurn()
         else:
             return 0
 
@@ -58,14 +58,27 @@ class Controller():
         # Add to queue
         self.User.save_objs()
 
+
+    def populationDynamics(self):
+        """
+        This will evolve to be exponantial eventually
+        However until then, it's linear
+        P = P0 e^tx where x is exp coefficient
+        MaxPop = Housing * 1000
+        P = P + 200
+        """
+
+        for key, planet in self.User.planets.items():
+            planet["population"] = int(planet["population"]) + 200
+            if int(planet["population"]) > (int(planet["housing"]) * 1000):
+                planet["populaton"] = int(planet["housing"]) * 1000
+
+
     def evalTurn(self):
-        user = self.User.user
-        for planet in User.getUserPlanetsFromList():
-            planet["population"] += planet["housing"] * 50
-
-        
+        self.User.settings["turn"] = int(self.User.settings["turn"]) + 1
+        self.populationDynamics()
         print("eval'd turn")
-
+        self.User.save_objs()
 
     def updateQueue(self):
         print("updated queue")
