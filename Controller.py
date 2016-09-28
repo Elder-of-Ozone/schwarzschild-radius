@@ -73,10 +73,17 @@ class Controller():
             if int(planet["population"]) > (int(planet["housing"]) * 1000):
                 planet["populaton"] = int(planet["housing"]) * 1000
 
+    def updateResources(self):
+        self.populationDynamics()
+
+        for key, planet in self.User.planets.items():
+            planet["rareEarthElement"] = int(planet["rareEarthElement"]) + (200 * int(planet["mine"]))
+            planet["metals"] = int(planet["metals"]) + (500 * int(planet["mine"]))
+            planet["food"] = int(planet["food"]) + (500 * int(planet["farm"]))
 
     def evalTurn(self):
         self.User.settings["turn"] = int(self.User.settings["turn"]) + 1
-        self.populationDynamics()
+        self.updateResources()
         print("eval'd turn")
         self.User.save_objs()
 
