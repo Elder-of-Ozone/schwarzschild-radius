@@ -11,3 +11,72 @@ class buildingFactory():
 
 
     """
+    self.buildings = {
+                 "city":        self.city(),
+                 "mine":        self.mine(),
+                 "farm":        self.farm(),
+                 "shipyard":    self.shipyard(),
+                 "housing":     self.housing(),
+
+
+    def __init__(self,name, quantity=1):
+                 
+        self.buildings[name] 
+        self.quantity = quantity
+
+    def increaseQuantity(self,planet, quantity=1):
+        for resource, value in self.outputDict.items():
+            if planet[resource] -= value > 0:
+                planet[resource] -= value
+            else:
+                return False
+        # if loop fails, it breaks and returns false
+        self.quantity+=quantity
+
+ 
+
+    def decreaseQuantity(self,quantity=1):
+        self.quantity -=quanity
+
+    def totalOutput(self,resource):
+        print("this function should get the total output of the given resource per turn")
+    
+    @staticmethod
+    def listOfBuildings():
+        buildings = []
+        for building, value in self.buildings.items()
+            buildings.append(building)
+
+        return buildings
+
+    def city(self):
+        self.description = "The city is fundamental to a growing population, providing homes and work"
+        self.outputDict = {"housing": 10000}
+        self.construction = {"metal": 1000, "rareEarth": 250}
+
+    def mine(self):
+        self.description = "Mines primarily provide metals and rare earth mineral resources"
+        self.inputDict = {"energy": 50}
+        self.outputDict = {"metal": 200, "rareEarth": 100}
+        self.construction = {"metal": 200, "rareEarth": 100} 
+
+    def farm(self):
+        self.description = "Farms provide food for population"
+        self.inputDict = {}
+        self.outputDict = {}
+        self.construction = {}
+
+
+    def shipyard(self):
+        self.description = "Shipyard are necesary to build ships"
+        self.inputDict = {}
+        self.outputDict = {}
+        self.construction = {}
+
+
+    def housing(self):
+        self.description = "Housing provide living space for the planets population"
+        self.inputDict = {}
+        self.outputDict = {}
+        self.construction = {}
+

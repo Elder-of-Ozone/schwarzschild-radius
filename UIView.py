@@ -6,7 +6,7 @@ import os
 import pickle
 import collections #OrderedDict
 import TimeContainer
-
+from buildings import buildingFactory
 
 class UIView():
 
@@ -51,7 +51,7 @@ class UIView():
         os.system("clear")
         
         for key,value in planets.items(): 
-            print(value['name'])
+            print(key,": ", value["name"])
 
         return input("Planet Identification Number:")
 
@@ -60,9 +60,12 @@ class UIView():
         Build structures.
         """
         os.system("clear")
-        print("Build Structure for",)
-        print("1. Mine") 
-        return input("Building Code: ")
+        buildings = buildingFactory("city")
+        print("Build Structure for")
+        for key in buildings.buildingDict:
+            print(key)
+        # delete buildings hopefully happens from GC
+        return input("Building Name: ")
 
 
     def add_option(self, user, planets, fleets):

@@ -1,5 +1,5 @@
 import pickle
-
+from buildings import buildingFactory
 class User():
 
     username = "hydrius"
@@ -16,8 +16,15 @@ class User():
             }
 
     planets = {
-                "1" : {
-                        "city": 1,
+            "1" : { 
+                        "name": "Planet X",
+                        "population": 1000,
+                        "metals": 2000,
+                        "rareEarth": 1000,
+                        "city":     buildingFactory("city"),
+                        "mine":     buildingFactory("mine", 2),
+                        "farm":     buildingFactory("farm", 2),
+                        "housing":  buildingFactory("housing"),
                     },
             }
 

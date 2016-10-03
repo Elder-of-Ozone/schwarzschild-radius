@@ -37,7 +37,7 @@ class Controller():
         if obj == "user":
             user.user[key] = val
         elif obj == "planet":
-            planet_id = input("Enter Planet ID")
+            #planet_id = input("Enter Planet ID")
             planet_id = "1" # testing purposes
             planets[planet_id][key] = val
 
@@ -50,11 +50,14 @@ class Controller():
 
 
     def structure(self,planet,building_id):
+        
+        
         print(planet)
         print(building_id)
-        structures = ["mine", "farm", "shipyard", "housing"]
-        cost_in_metals =[200, 200, 500, 200]
-        cost_in_rareEarth = [50, 50, 100, 0]
+        structures = buildingFactory.listOfBuildings()
+        planet["1"][structure].increaseQuantity(planet["1"])
+
+
         building_id = int(building_id) - 1
         self.User.planets["1"][structures[building_id]] = int(self.User.planets["1"][structures[building_id]]) + 1
         self.User.planets["1"]["metals"] = int(self.User.planets["1"]["metals"]) - cost_in_metals[building_id] 
