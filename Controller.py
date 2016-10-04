@@ -49,19 +49,21 @@ class Controller():
         user.save_objs()
 
 
-    def structure(self,planet,building_id):
+    def structure(self,planetID,buildingName):
+         
+        #structures = buildingFactory.listOfBuildings()
+     
+        # Replace "1" with planetID after testing.
         
-        
-        print(planet)
-        print(building_id)
-        structures = buildingFactory.listOfBuildings()
-        planet["1"][structure].increaseQuantity(planet["1"])
-
-
-        building_id = int(building_id) - 1
-        self.User.planets["1"][structures[building_id]] = int(self.User.planets["1"][structures[building_id]]) + 1
-        self.User.planets["1"]["metals"] = int(self.User.planets["1"]["metals"]) - cost_in_metals[building_id] 
-        self.User.planets["1"]["rareEarthElement"] = int(self.User.planets["1"]["rareEarthElement"]) - cost_in_rareEarth[building_id]  
+        ret = self.User.planets["1"][buildingName].increaseQuantity()
+        if ret:
+           return True
+        else:
+            return False
+        #iself.User.planets["1"][structures[building_id]] = int(self.User.planets["1"][structures[building_id]]) + 1
+        #self.User.planets["1"]["metals"] = int(self.User.planets["1"]["metals"]) - cost_in_metals[building_id] 
+        #self.User.planets["1"]["rareEarthElement"] = int(self.User.planets["1"]["rareEarthElement"]) - cost_in_rareEarth[building_id]  
+        #input
         # Add to queue
         self.User.save_objs()
 

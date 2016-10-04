@@ -60,12 +60,21 @@ class UIView():
         Build structures.
         """
         os.system("clear")
-        buildings = buildingFactory("city")
-        print("Build Structure for")
-        for key in buildings.buildingDict:
-            print(key)
-        # delete buildings hopefully happens from GC
-        return input("Building Name: ")
+        building = buildingFactory.listOfBuildings()
+        print(" Which Structure To Build:")
+        for  value in building:
+            print(" *", value)
+        
+        # Well hello again.  
+        # For testing purposes, default is 
+        ret = input(" Building Name: ")
+        
+        if ret is "":
+            return "farm"
+        else:
+            return ret
+        #
+        #return input(" Building Name: ")
 
 
     def add_option(self, user, planets, fleets):

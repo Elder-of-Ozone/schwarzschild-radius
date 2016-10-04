@@ -11,25 +11,60 @@ class buildingFactory():
 
 
     """
-    self.buildings = {
-                 "city":        self.city(),
-                 "mine":        self.mine(),
-                 "farm":        self.farm(),
-                 "shipyard":    self.shipyard(),
-                 "housing":     self.housing(),
-
-
     def __init__(self,name, quantity=1):
                  
-        self.buildings[name] 
         self.quantity = quantity
+        
+        # Yo Future Aaron:
+        # This is just a case statement.  You use a dictionary to 
+        # route the function. If error arises probably just a typo somewhere.
+        # 
+        # You should also probably put this in a try and raise exception.
+        # Remember to do it in the future!
+        # 
+        # Also Susan says "must love wife". 
+        # 
+        # See ya dude
+        
 
-    def increaseQuantity(self,planet, quantity=1):
-        for resource, value in self.outputDict.items():
-            if planet[resource] -= value > 0:
-                planet[resource] -= value
-            else:
-                return False
+        self.buildings = {
+                     "city":        self.city(),
+                     "mine":        self.mine(),
+                     "farm":        self.farm(),
+                     "shipyard":    self.shipyard(),
+                     "housing":     self.housing(),
+        }
+        self.buildings[name] 
+        
+    @staticmethod
+    def listOfBuildings():
+        # temporary instance of buildingFactory()
+        
+        # Deleted bug
+        # avoid calling anything in here buildings
+        # same variable name buildings!
+
+        # make temporary instance of self
+        Temp = buildingFactory("city")
+        planet_list = []
+
+                # for buil, value in TempClass.buildings.items():
+       #     planet_list.append(building)
+
+        #return buildings
+        for resource, value in Temp.buildings.items():
+            planet_list.append(resource)
+
+        return planet_list
+
+
+    def increaseQuantity(self, quantity=1):
+        
+        #for resource, value in self.outputDict.items():
+        #    if (planet[resource] - value) > 0:
+        #        planet[resource] -= value
+        #    else:
+        #        return False
         # if loop fails, it breaks and returns false
         self.quantity+=quantity
 
@@ -41,14 +76,6 @@ class buildingFactory():
     def totalOutput(self,resource):
         print("this function should get the total output of the given resource per turn")
     
-    @staticmethod
-    def listOfBuildings():
-        buildings = []
-        for building, value in self.buildings.items()
-            buildings.append(building)
-
-        return buildings
-
     def city(self):
         self.description = "The city is fundamental to a growing population, providing homes and work"
         self.outputDict = {"housing": 10000}
@@ -79,4 +106,5 @@ class buildingFactory():
         self.inputDict = {}
         self.outputDict = {}
         self.construction = {}
+
 
