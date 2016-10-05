@@ -10,6 +10,7 @@ class User():
                   }
 
     user = {
+            "username": "Hydrius",
             "economy" : 9000,
             "planet_ID": ["1"],
             "fleet_ID": ["1"],

@@ -29,22 +29,32 @@ class UIView():
         print("*" * 28, "\n")
         return input("Please make a selection: ")
     
-    def show_user(self, user):
+    def show_user(self, User):
         os.system("clear")
        
-        print("Game Status")
-        print(user.settings)
-
-        userSorted = collections.OrderedDict(sorted(user.user.items()))
-        print("\nUser Obj")
-        for obj in userSorted:
-            print(obj, ": " , user.user[obj])
+        print("*" * 12, "Game Snapshot", "*" * 12)
+        print("\n Username:     ", User.username)
+        print(" Turn:         ", User.settings["turn"])
         
-        print("\nPlanet Obj")
-        print(user.getUserPlanetsFromList(user.user, user.planets),"\n")
+        print("\n Users' Planet & Fleet ID")
+        print(" Planet Id:    ", User.user["planet_ID"])
+        print(" Fleet Id:     ", User.user["fleet_ID"])
 
-        print("\nFleet Obj")
-        print(user.getUserFleetsFromList(user.user, user.fleets), "\n")
+        print("\n")
+
+        print(" Planet Information")
+        for idx in User.user["planet_ID"]:
+            print("\n Name:         ", User.planets[idx]["name"])
+            print(" Population:   ", User.planets[idx]["population"])
+            print("\n Resources   ")
+            print(" Metal:        ", User.planets[idx]["metals"])
+            print(" Rare Earth:   ", User.planets[idx]["rareEarth"])
+            print("\n Structures" )
+            print(" City:         ", User.planets[idx]["city"].quantity)
+            print(" Mine:         ", User.planets[idx]["mine"].quantity)
+            print(" Farm:         ", User.planets[idx]["farm"].quantity)
+            print(" Housing:      ", User.planets[idx]["housing"].quantity)
+
         pause = input("")
 
     def viewPlanets(self, planets):
