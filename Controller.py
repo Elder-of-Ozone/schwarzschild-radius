@@ -53,13 +53,33 @@ class Controller():
          
         #structures = buildingFactory.listOfBuildings()
      
+        planetID = "1"
         # Replace "1" with planetID after testing.
+
+        # p and b are just aliases for the following:
+
+        p = self.User.planets[planetID]
+        b = self.User.planets[planetID][buildingName]
+        i = 0
+        for resource, value in b.outputDict.items():
+            if (p[resource] - value) > 0:
+                print("enough resource of", resource)
+                i+=1
+        if i == (len(b.outputDict) - 1):
+            b.placeInQueue.append(int(User.settings["Turn"]) + b.buildTime)
+                #p[resource] -= value
+
+        #input()
         
-        ret = self.User.planets["1"][buildingName].increaseQuantity() #or .quantity + 1
-        if ret:
-           return True
-        else:
-            return False
+        
+        
+        #self.User.planets[planetID][buildingName].quantity +=1
+
+        #ret = self.User.planets["1"][buildingName].increaseQuantity() #or .quantity + 1
+        #if ret:
+        #   return True
+        #else:
+        #    return False
         #iself.User.planets["1"][structures[building_id]] = int(self.User.planets["1"][structures[building_id]]) + 1
         #self.User.planets["1"]["metals"] = int(self.User.planets["1"]["metals"]) - cost_in_metals[building_id] 
         #self.User.planets["1"]["rareEarthElement"] = int(self.User.planets["1"]["rareEarthElement"]) - cost_in_rareEarth[building_id]  

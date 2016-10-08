@@ -35,13 +35,13 @@ class buildingFactory():
         
 
         self.buildings = {
-                     "city":        self.city(),
-                     "mine":        self.mine(),
-                     "farm":        self.farm(),
-                     "shipyard":    self.shipyard(),
-                     "housing":     self.housing(),
+                     "city":        self.city,
+                     "mine":        self.mine,
+                     "farm":        self.farm,
+                     "shipyard":    self.shipyard,
+                     "housing":     self.housing,
         }
-        self.buildings[name] 
+        self.buildings[name]() 
         
     @staticmethod
     def listOfBuildings():
@@ -86,13 +86,13 @@ class buildingFactory():
     def city(self):
         self.description = "The city is fundamental to a growing population, providing homes and work"
         self.outputDict = {"housing": 10000}
-        self.construction = {"metal": 1000, "rareEarth": 250}
+        self.construction = {"metals": 1000, "rareEarth": 250}
 
     def mine(self):
         self.description = "Mines primarily provide metals and rare earth mineral resources"
         self.inputDict = {"energy": 50}
-        self.outputDict = {"metal": 200, "rareEarth": 100}
-        self.construction = {"metal": 200, "rareEarth": 100} 
+        self.outputDict = {"metals": 200, "rareEarth": 100}
+        self.construction = {"metals": 200, "rareEarth": 100} 
 
     def farm(self):
         self.description = "Farms provide food for population"
