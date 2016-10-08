@@ -55,7 +55,7 @@ class Controller():
      
         # Replace "1" with planetID after testing.
         
-        ret = self.User.planets["1"][buildingName].increaseQuantity()
+        ret = self.User.planets["1"][buildingName].increaseQuantity() #or .quantity + 1
         if ret:
            return True
         else:

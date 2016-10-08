@@ -12,8 +12,15 @@ class buildingFactory():
 
     """
     def __init__(self,name, quantity=1):
-                 
+                
         self.quantity = quantity
+
+        # e.g [1,3,4,8,16,32 etc] 
+        # Related variables and functions in class User()
+        # - inQueue
+        # + getTotalQueue()
+
+        self.placeInQueue = [] # e.g [2, 4,6,10] Limit this size
         
         # Yo Future Aaron:
         # This is just a case statement.  You use a dictionary to 
@@ -60,11 +67,11 @@ class buildingFactory():
 
     def increaseQuantity(self, quantity=1):
         
-        #for resource, value in self.outputDict.items():
-        #    if (planet[resource] - value) > 0:
-        #        planet[resource] -= value
-        #    else:
-        #        return False
+        for resource, value in self.outputDict.items():
+            if (planet[resource] - value) > 0:
+                planet[resource] -= value
+            else:
+                return False
         # if loop fails, it breaks and returns false
         self.quantity+=quantity
 
