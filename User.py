@@ -1,5 +1,6 @@
 import pickle
 from buildings import buildingFactory
+from planet import planet
 class User():
 
     username = "hydrius"
@@ -7,7 +8,7 @@ class User():
     settings = {
             "turn": "1",
             "created": "Days and days ago",
-                  }
+                   }
 
     user = {
             "username": "Hydrius",
@@ -17,16 +18,8 @@ class User():
             }
 
     planets = {
-            "1" : { 
-                        "name": "Planet X",
-                        "population": 1000,
-                        "metals": 2000,
-                        "rareEarth": 1000,
-                        "city":     buildingFactory("city"),
-                        "mine":     buildingFactory("mine", 2),
-                        "farm":     buildingFactory("farm", 2),
-                        "housing":  buildingFactory("housing"),
-                    },
+            "1" : planet("Nopeming")
+            
             }
 
     fleets = {
