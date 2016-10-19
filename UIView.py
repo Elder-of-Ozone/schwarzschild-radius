@@ -21,7 +21,7 @@ class UIView():
         print(" Current Time:", Time.getCurrentTime().time()) #getCurrentTime() returns a datetime object hence time()
         print(" Turns Elapsed:", Time.getCurrentTurn())
         print("\n")
-        print(" Population:", User.planets["1"]["population"])
+        print(" Population:", User.planets["1"].population)
         print("\n")
         print(" 1. List Objects")
         print(" 2. Add Objects")
@@ -44,16 +44,16 @@ class UIView():
 
         print(" Planet Information")
         for idx in User.user["planet_ID"]:
-            print("\n Name:         ", User.planets[idx]["name"])
-            print(" Population:   ", User.planets[idx]["population"])
+            print("\n Name:         ", User.planets[idx].name)
+            print(" Population:   ", User.planets[idx].population)
             print("\n Resources   ")
-            print(" Metal:        ", User.planets[idx]["metals"])
-            print(" Rare Earth:   ", User.planets[idx]["rareEarth"])
+            print(" Metal:        ", User.planets[idx].metals)
+            print(" Rare Earth:   ", User.planets[idx].rareEarth)
             print("\n Structures" )
-            print(" City:         ", User.planets[idx]["city"].quantity)
-            print(" Mine:         ", User.planets[idx]["mine"].quantity)
-            print(" Farm:         ", User.planets[idx]["farm"].quantity)
-            print(" Housing:      ", User.planets[idx]["housing"].quantity)
+            print(" City:         ", User.planets[idx].city.quantity)
+            print(" Mine:         ", User.planets[idx].mine.quantity)
+            print(" Farm:         ", User.planets[idx].farm.quantity)
+            print(" Housing:      ", User.planets[idx].housing.quantity)
 
         pause = input("")
 
