@@ -57,12 +57,12 @@ class UIView():
 
         pause = input("")
 
-    def viewPlanets(self, planets):
+    def view_planets(self, planets):
         os.system("clear")
         
-        for key,value in planets.items(): 
-            print(key,": ", value["name"])
-
+        #for key,value in planets.items(): 
+        #   print(key,": ", value["name"])
+        
         return input("Planet Identification Number:")
 
     def add_structure(self, planet, availableStructuresToBuild=None):
@@ -71,13 +71,20 @@ class UIView():
         """
         os.system("clear")
         building = buildingFactory.listOfBuildings()
-        print(" Which Structure To Build:")
-        for  value in building:
-            print(" *", value)
+        print("*" * 25)
+        print("\n Which Structure To Build:\n")
+       
+        print("",planet.name)
+        
+        print("\n 1. Mine:    ",planet.mine.quantity)
+        print(" 2. Farm:    ",planet.mine.quantity)
+        print(" 3. Farm:    ",planet.farm.quantity)
+        print(" 4. Housing: ",planet.housing.quantity)
+
         
         # Well hello again.  
         # For testing purposes, default is 
-        ret = input(" Building Name: ")
+        ret = input("\n Building Name: ")
         
         if ret is "":
             return "farm"
@@ -89,10 +96,15 @@ class UIView():
 
     def add_option(self, user, planets, fleets):
         os.system("clear")
+        print("This is currently broken.")
+        print("If I want to change something")
+        print("Please hard coded into here using this function")
+        print("This is for testing purposes only")
+
         obj  = input("Object to change: ") #user
         key = input("Key to add/change: ")
         val =  input("Key Value: ")
-        return obj, key, val
+        #return obj, key, val
 
 if __name__ == '__main__':
 

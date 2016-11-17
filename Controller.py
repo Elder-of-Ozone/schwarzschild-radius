@@ -3,7 +3,7 @@
 from UIView import UIView
 
 class Controller():
-    
+
     def __init__(self, View, User, Time):
 
         self.View = View
@@ -19,8 +19,9 @@ class Controller():
         elif ret == "2":
             self.add_option(self.User, self.User.fleets, self.User.planets)
         elif ret == "3":
-            select_planet = self.View.viewPlanets(self.User.planets)
-            building_id = self.View.add_structure(select_planet, self.availableStructuresForUser())
+            select_planet = self.View.view_planets(self.User.planets)
+            select_planet = "1"
+            building_id = self.View.add_structure(self.User.planets[select_planet], self.availableStructuresForUser())
             self.structure(select_planet, building_id)
 
         elif ret == "u":
@@ -31,20 +32,27 @@ class Controller():
             return 0
 
     def add_option(self,user, fleets, planets):
+        """ This is currently broken.
 
+            If you want to change a variable, please hard coded in the
+            add_option() within UIView.py file.absolute_import
+
+        """
         obj, key, val = self.View.add_option(user, planets, fleets)
-        
-        if obj == "user":
-            user.user[key] = val
-        elif obj == "planet":
-            #planet_id = input("Enter Planet ID")
-            planet_id = "1" # testing purposes
-            planets[planet_id][key] = val
 
-        elif obj == "fleet":
-            fleet_id = input("Enter Fleet ID")
-            fleet_id = "1"
-            fleets[fleet_id][key] = val
+# Uncomment once fixed
+
+        #if obj == "user":
+        #    user.user[key] = val
+        #elif obj == "planet":
+        #    #planet_id = input("Enter Planet ID")
+        #    planet_id = "1" # testing purposes
+        #    planets[planet_id].key = val
+
+        #elif obj == "fleet":
+        #    fleet_id = input("Enter Fleet ID")
+        #    fleet_id = "1"
+        #    fleets[fleet_id][key] = val
 
         user.save_objs()
 
@@ -59,15 +67,29 @@ class Controller():
         # p and b are just aliases for the following:
 
         p = self.User.planets[planetID]
-        b = self.User.planets[planetID][buildingName]
+
+        if buildingName == "city":
+            b = self.User.planets[planetID].city
+        elif buildingName == "mine":
+            b = self.User.planets[planetID].mine
+        elif buildingName == "farm":
+            b = self.User.planets[planetID].farm
+        elif buildingName == "housing":
+            b = self.User.planets[planetID].housing
+
         i = 0
-        for resource, value in b.outputDict.items():
-            if (p[resource] - value) > 0:
+        for resource, value in b.construction.items():
+            quantity = getattr(p, resource)
+            if (quantity - value) > 0:
                 print("enough resource of", resource)
                 i+=1
-        if i == (len(b.outputDict) - 1):
-            b.placeInQueue.append(int(User.settings["Turn"]) + b.buildTime)
-                #p[resource] -= value
+        if True :#i == (len(b.outputDict) - 1):
+            for resource, value in b.construction.items():
+                quantity = getattr(p, resource)
+                setattr = (p, resource, (quantity-value))
+                b.quantity +=1 
+                # Need to add to 
+            #p[resource] -= value
 
         #input()
         
@@ -121,3 +143,14 @@ class Controller():
 
     def availableStructuresForUser(self):
         print("To be implemented")
+
+    def combat(fleet1, fleet2):
+        fleets = ["Scout","Outpost","Freighter","Bomber","Fighter","Frigate", "Destroyer", "Battleship", "Dreadnaught"]
+
+        attack_array = [[1,2,8,16,32],
+                        [1,1,4,16,32],
+                        [0.25,0.125,1,2,8,16]
+                        [0.125,0.25,2,1,8,16]
+                        [0.0625,0.03125,0.125,0.0625,1,2]
+                        [0.03125,0.0625,0.0625,0.125,2,1]]
+
