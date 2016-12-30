@@ -6,10 +6,16 @@ class Controller():
 
     def __init__(self, View, User, Time):
 
-        self.View = View
         self.User = User
         self.Time = Time
 
+        if View.__class__.__name__ == "FrontEnd":
+            self.FrontEnd = View
+        else:
+            self.View = View
+
+
+    # Depreciated
     def updateView(self):
         ret = self.View.show_menu(self.User, self.Time)
         #self.View.menu(self.User, self.Time)
@@ -58,9 +64,9 @@ class Controller():
 
 
     def structure(self,planetID,buildingName):
-         
+
         #structures = buildingFactory.listOfBuildings()
-     
+
         planetID = "1"
         # Replace "1" with planetID after testing.
 
@@ -110,7 +116,7 @@ class Controller():
         self.User.save_objs()
 
 
-    def populationDynamics(self):
+    def populationDynamics(self, idx, planet):
         """
         This will evolve to be exponantial eventually
         However until then, it's linear
@@ -118,28 +124,43 @@ class Controller():
         MaxPop = Housing * 1000
         P = P + 200
         """
+        print(planet.population+50)
+        planet.population = planet.populaton + 20
+        #if planet.population > (planet.housing.quantity * 200):
+        #    planet.populaton = planet.housing.quantity * 200
 
-        for key, planet in self.User.planets.items():
-            planet["population"] = int(planet["population"]) + 200
-            if int(planet["population"]) > (int(planet["housing"]) * 1000):
-                planet["populaton"] = int(planet["housing"]) * 1000
-
-    def updateResources(self):
-        self.populationDynamics()
-
-        for key, planet in self.User.planets.items():
-            planet["rareEarthElement"] = int(planet["rareEarthElement"]) + (200 * int(planet["mine"]))
-            planet["metals"] = int(planet["metals"]) + (500 * int(planet["mine"]))
-            planet["food"] = int(planet["food"]) + (500 * int(planet["farm"]))
+    def updateResources(self, idx, planet):
+        for resource, quantity in planet.resource.items():
+            print("resource:", resource, quantity)
+            if resource == "metals":
+                if resource in planet.mine.outputDict:
+                    planet.resource[resource] = quantity +  int(planet.mine.quantity) * planet.mine.outputDict[resource]
+            elif resource == "rareEarth":
+                if resource in planet.mine.outputDict:
+                    planet.resource[resource] = quantity + int(planet.mine.quantity) * planet.mine.outputDict[resource]
+            elif resource == "food":
+                if resource in planet.farm.outputDict:
+                    planet.resource[resource] = quantity + int(planet.farm.quantity) * planet.farm.outputDict[resource]
 
     def evalTurn(self):
-        self.User.settings["turn"] = int(self.User.settings["turn"]) + 1
-        self.updateResources()
-        print("eval'd turn")
-        self.User.save_objs()
+        for key, planet in self.User.planets.items():
+            self.populationDynamics(key, planet)
+            self.updateResources(key, planet)
+            self.updateQueue(key, planet)
+        #self.User.settings["turn"] = int(self.User.settings["turn"]) + 1
+        #self.User.save_objs()
 
-    def updateQueue(self):
-        print("updated queue")
+    def updateQueue(self, idx, planet):
+        for queue in planet.queue:
+            print(queue[0].name)
+            if queue[1] == 1:
+                queue[0].increaseQuantity(planet)
+                del(planet.queue[0])
+            else:
+                queue[1] -= 1
+
+        #print(self.User.planets["1"].queue)
+        #print("updated queue")
 
     def availableStructuresForUser(self):
         print("To be implemented")
